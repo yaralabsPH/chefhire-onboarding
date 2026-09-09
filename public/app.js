@@ -144,7 +144,8 @@
 
       const result = await response.json().catch(() => ({}));
       if (!response.ok || !result.ok) {
-        throw new Error(result.error || 'Submission failed');
+        const detail = result.error || `Submission failed (HTTP ${response.status})`;
+        throw new Error(detail);
       }
 
       form.hidden = true;
@@ -153,7 +154,8 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     } catch (error) {
       console.error(error);
-      formError.textContent = 'We could not submit the form. Please try again, or contact CJ if the problem continues.';
+      const message = error && error.message ? error.message : 'Unknown submission error';
+      formError.textContent = `Could not submit: ${message}`;
       formError.hidden = false;
     } finally {
       submitBtn.disabled = false;

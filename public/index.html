@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="ChefHire CRM onboarding form" />
+  <title>ChefHire CRM Onboarding</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="page-shell">
+    <section class="intro-card">
+      <div class="brand-row">
+        <div class="brand-mark">CH</div>
+        <div>
+          <div class="eyebrow">ChefHire</div>
+          <h1>CRM Setup Onboarding</h1>
+        </div>
+      </div>
+      <p class="intro-copy">
+        Help us configure your new CRM around the way ChefHire actually handles enquiries,
+        bookings and follow-ups. This should take about <strong>7–10 minutes</strong>.
+      </p>
+
+      <div class="progress-wrap" aria-label="Form progress">
+        <div class="progress-meta">
+          <span id="stepLabel">Step 1 of 5</span>
+          <span id="progressPercent">20%</span>
+        </div>
+        <div class="progress-track">
+          <div id="progressBar" class="progress-bar" style="width:20%"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="form-card">
+      <form id="onboardingForm" novalidate>
+        <input type="text" name="website" id="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+        <div class="form-step active" data-step="1">
+          <div class="section-head">
+            <span class="step-kicker">01 — Business basics</span>
+            <h2>Tell us who we’re setting up.</h2>
+            <p>Just the essentials we need for the account and primary contact.</p>
+          </div>
+
+          <div class="grid two">
+            <div class="field">
+              <label for="businessName">Business name <span>*</span></label>
+              <input id="businessName" name="businessName" type="text" value="ChefHire" required />
+            </div>
+            <div class="field">
+              <label for="abn">ABN / ACN</label>
+              <input id="abn" name="abn" type="text" placeholder="e.g. 51 642 343 397" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="businessAddress">Main business address <span>*</span></label>
+            <input id="businessAddress" name="businessAddress" type="text" placeholder="Street, suburb, state, postcode" required />
+          </div>
+
+          <div class="field">
+            <label for="primaryContact">Primary contact name & role <span>*</span></label>
+            <input id="primaryContact" name="primaryContact" type="text" placeholder="e.g. Kerri — Operations Manager" required />
+          </div>
+
+          <div class="grid two">
+            <div class="field">
+              <label for="email">Best email <span>*</span></label>
+              <input id="email" name="email" type="email" placeholder="name@chefhire.com.au" required />
+            </div>
+            <div class="field">
+              <label for="phone">Best mobile / phone <span>*</span></label>
+              <input id="phone" name="phone" type="tel" placeholder="+61 ..." required />
+            </div>
+          </div>
+        </div>
+
+        <div class="form-step" data-step="2">
+          <div class="section-head">
+            <span class="step-kicker">02 — Team & operations</span>
+            <h2>Who needs access and how do you operate?</h2>
+            <p>This helps us configure users, alerts, hours and routing correctly.</p>
+          </div>
+
+          <div class="field">
+            <label for="ghlUsers">Who needs CRM access and who should receive new-enquiry alerts? <span>*</span></label>
+            <textarea id="ghlUsers" name="ghlUsers" rows="4" placeholder="Name — email — role. Mention who should receive new enquiry alerts." required></textarea>
+            <small>You can list multiple people here.</small>
+          </div>
+
+          <div class="field">
+            <label for="operatingCoverage">Operating coverage / availability <span>*</span></label>
+            <textarea id="operatingCoverage" name="operatingCoverage" rows="4" placeholder="e.g. Australia-wide; urgent staffing enquiries handled 24/7" required></textarea>
+          </div>
+        </div>
+
+        <div class="form-step" data-step="3">
+          <div class="section-head">
+            <span class="step-kicker">03 — CRM scope</span>
+            <h2>What should the CRM manage?</h2>
+            <p>Select what applies. We’ll design the pipelines and automation from these answers.</p>
+          </div>
+
+          <fieldset class="field">
+            <legend>Which service enquiries should the CRM manage? <span>*</span></legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="services" value="Temporary chefs"><span>Temporary chefs</span></label>
+              <label class="choice"><input type="checkbox" name="services" value="Emergency cover"><span>Emergency cover</span></label>
+              <label class="choice"><input type="checkbox" name="services" value="Permanent recruitment"><span>Permanent recruitment</span></label>
+              <label class="choice"><input type="checkbox" name="services" value="Seasonal staffing"><span>Seasonal staffing</span></label>
+              <label class="choice"><input type="checkbox" name="services" value="Overseas recruitment / sponsorship"><span>Overseas recruitment / sponsorship</span></label>
+              <label class="choice"><input type="checkbox" name="services" value="Other"><span>Other</span></label>
+            </div>
+            <div class="field-error" data-error-for="services"></div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>Where do new enquiries currently come from? <span>*</span></legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="sources" value="Website forms"><span>Website forms</span></label>
+              <label class="choice"><input type="checkbox" name="sources" value="Phone"><span>Phone</span></label>
+              <label class="choice"><input type="checkbox" name="sources" value="Email"><span>Email</span></label>
+              <label class="choice"><input type="checkbox" name="sources" value="Google"><span>Google</span></label>
+              <label class="choice"><input type="checkbox" name="sources" value="Facebook / Instagram"><span>Facebook / Instagram</span></label>
+              <label class="choice"><input type="checkbox" name="sources" value="Referrals"><span>Referrals</span></label>
+              <label class="choice"><input type="checkbox" name="sources" value="Other"><span>Other</span></label>
+            </div>
+            <div class="field-error" data-error-for="sources"></div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>Should the CRM manage chef/candidate recruitment too? <span>*</span></legend>
+            <div class="radio-stack">
+              <label class="choice radio"><input type="radio" name="candidateRecruitment" value="No — venue/client enquiries & bookings only" required><span><strong>No</strong> — venue/client enquiries & bookings only</span></label>
+              <label class="choice radio"><input type="radio" name="candidateRecruitment" value="Yes — include chef/candidate recruitment" required><span><strong>Yes</strong> — include chef/candidate recruitment</span></label>
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="form-step" data-step="4">
+          <div class="section-head">
+            <span class="step-kicker">04 — Booking & follow-up</span>
+            <h2>How does an enquiry become a booking?</h2>
+            <p>A few practical details are enough. We’ll translate the process into GHL later.</p>
+          </div>
+
+          <div class="field">
+            <label for="process">Briefly, what happens from a new enquiry to a confirmed booking? <span>*</span></label>
+            <textarea id="process" name="process" rows="5" placeholder="A few sentences is enough." required></textarea>
+          </div>
+
+          <fieldset class="field">
+            <legend>What details must be collected before a booking can be confirmed? <span>*</span></legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Venue / location"><span>Venue / location</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Date"><span>Date</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Start / end time"><span>Start / end time</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Number of chefs"><span>Number of chefs</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Chef role / level"><span>Chef role / level</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Duration"><span>Duration</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Rate / budget"><span>Rate / budget</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Urgency"><span>Urgency</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Preferred / repeat chef"><span>Preferred / repeat chef</span></label>
+              <label class="choice"><input type="checkbox" name="bookingDetails" value="Other notes"><span>Other notes</span></label>
+            </div>
+            <div class="field-error" data-error-for="bookingDetails"></div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>How should new enquiries be followed up? <span>*</span></legend>
+            <div class="choice-grid compact">
+              <label class="choice"><input type="checkbox" name="followupChannels" value="SMS"><span>SMS</span></label>
+              <label class="choice"><input type="checkbox" name="followupChannels" value="Email"><span>Email</span></label>
+              <label class="choice"><input type="checkbox" name="followupChannels" value="Phone call"><span>Phone call</span></label>
+              <label class="choice"><input type="checkbox" name="followupChannels" value="Combination"><span>Combination</span></label>
+            </div>
+            <div class="field-error" data-error-for="followupChannels"></div>
+          </fieldset>
+
+          <div class="field">
+            <label for="firstResponseTime">How quickly should the first follow-up happen? <span>*</span></label>
+            <select id="firstResponseTime" name="firstResponseTime" required>
+              <option value="">Select one</option>
+              <option>Immediately — under 5 minutes</option>
+              <option>Within 15 minutes</option>
+              <option>Within 1 hour</option>
+              <option>Same business day</option>
+              <option>Custom / depends on enquiry type</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-step" data-step="5">
+          <div class="section-head">
+            <span class="step-kicker">05 — Systems & final details</span>
+            <h2>Last few setup details.</h2>
+            <p>These tell us what needs migrating or connecting before the CRM is ready.</p>
+          </div>
+
+          <div class="field">
+            <label for="customerComms">Which email address and phone number should customers see messages from? <span>*</span></label>
+            <textarea id="customerComms" name="customerComms" rows="3" placeholder="Email + phone. If you want a new CRM number, just write that." required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="currentData">Where are your current contacts/bookings stored, and should we migrate them? <span>*</span></label>
+            <textarea id="currentData" name="currentData" rows="4" placeholder="Spreadsheet, inbox, existing CRM, booking/staffing system, etc." required></textarea>
+          </div>
+
+          <fieldset class="field">
+            <legend>Which tools must connect with the CRM? <span>*</span></legend>
+            <div class="choice-grid">
+              <label class="choice"><input type="checkbox" name="integrations" value="Website forms"><span>Website forms</span></label>
+              <label class="choice"><input type="checkbox" name="integrations" value="Google Calendar"><span>Google Calendar</span></label>
+              <label class="choice"><input type="checkbox" name="integrations" value="Gmail / Google Workspace"><span>Gmail / Google Workspace</span></label>
+              <label class="choice"><input type="checkbox" name="integrations" value="Accounting / invoicing"><span>Accounting / invoicing</span></label>
+              <label class="choice"><input type="checkbox" name="integrations" value="Existing booking / staffing system"><span>Existing booking / staffing system</span></label>
+              <label class="choice"><input type="checkbox" name="integrations" value="Other"><span>Other</span></label>
+              <label class="choice"><input type="checkbox" name="integrations" value="None"><span>None</span></label>
+            </div>
+            <div class="field-error" data-error-for="integrations"></div>
+          </fieldset>
+
+          <div class="field">
+            <label for="additionalNotes">Anything else we should know before we build?</label>
+            <textarea id="additionalNotes" name="additionalNotes" rows="4" placeholder="Optional"></textarea>
+          </div>
+
+          <div class="review-note">
+            <strong>What happens next?</strong>
+            <p>After submission, CJ will review the answers and use them to configure the CRM structure, fields, workflows and integrations.</p>
+          </div>
+        </div>
+
+        <div id="formError" class="global-error" role="alert" hidden></div>
+
+        <div class="form-actions">
+          <button type="button" id="prevBtn" class="button secondary" hidden>Back</button>
+          <button type="button" id="nextBtn" class="button primary">Continue</button>
+          <button type="submit" id="submitBtn" class="button primary" hidden>
+            <span class="button-text">Submit onboarding</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
+
+      <div id="successState" class="success-state" hidden>
+        <div class="success-icon">✓</div>
+        <h2>Thanks — onboarding received.</h2>
+        <p>Your CRM setup information has been submitted successfully. CJ has been notified and will review the details before the build begins.</p>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>ChefHire CRM onboarding</span>
+      <span>Securely submitted for CRM setup</span>
+    </footer>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>

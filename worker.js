@@ -9,7 +9,13 @@ export default {
 
     if (url.pathname === '/api/submit') {
       if (request.method === 'GET') {
-        return json({ ok: true, service: 'ChefHire onboarding submission endpoint' }, 200);
+        return json({
+          ok: true,
+          service: 'ChefHire onboarding submission endpoint',
+          configured: Boolean(env.APPS_SCRIPT_URL && env.FORM_SHARED_SECRET),
+          hasAppsScriptUrl: Boolean(env.APPS_SCRIPT_URL),
+          hasSharedSecret: Boolean(env.FORM_SHARED_SECRET)
+        }, 200);
       }
 
       if (request.method !== 'POST') {
@@ -86,7 +92,7 @@ async function handleSubmit(request, env) {
 
     if (!upstream.ok || !result.ok) {
       console.error('Apps Script error:', upstream.status, text);
-      return json({ ok: false, error: result.error || 'Could not save submission.' }, 502);
+      return json({ ok: false, error: result.error || `Could not save submission (HTTP ${upstream.status}).` }, 502);
     }
 
     return json({ ok: true, submissionId: result.submissionId || body.submissionId }, 200);
